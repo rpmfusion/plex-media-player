@@ -41,7 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libGL-devel
 BuildRequires:  pkgconfig(libcec)
 BuildRequires:  pkgconfig(libdrm)
-%if 0%{?fedora} > 29 || 0%{?rhel} > 7
+%if 0%{?fedora} > 29
 BuildRequires:: compat-minizip-devel
 %else
 BuildRequires:  pkgconfig(minizip)
