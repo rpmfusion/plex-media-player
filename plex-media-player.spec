@@ -41,7 +41,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libGL-devel
 BuildRequires:  pkgconfig(libcec)
 BuildRequires:  pkgconfig(libdrm)
+%if 0%{?fedora} > 29 || 0%{?rhel} > 7
+BuildRequires:: compat-minizip-devel
+%else
 BuildRequires:  pkgconfig(minizip)
+%endif
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(Qt5) >= 5.9.5
 BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.5
