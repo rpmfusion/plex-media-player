@@ -117,10 +117,10 @@ install -pm0755 build/src/plexmediaplayer %{buildroot}%{_bindir}/plexmediaplayer
 install -pm0755 build/src/pmphelper %{buildroot}%{_bindir}/pmphelper
 install -pm0755 %{SOURCE6} %{buildroot}%{_bindir}/plexmediaplayer-standalone
 
-mkdir -p %{buildroot}%{_datadir}/metainfo
-install -pm0644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/
+mkdir -p %{buildroot}%{_metainfodir}/
+install -pm0644 %{SOURCE2} %{buildroot}%{_metainfodir}/
 appstream-util validate-relax --nonet \
-  %{buildroot}%{_datadir}/metainfo/plexmediaplayer.appdata.xml
+  %{buildroot}%{_metainfodir}/plexmediaplayer.appdata.xml
 
 mkdir -p %{buildroot}%{_datadir}/plexmediaplayer/selinux
 install -pm0644 %{SOURCE7} %{buildroot}%{_datadir}/plexmediaplayer/selinux/plexmediaplayer.te
@@ -195,7 +195,7 @@ update-desktop-database &> /dev/null || :
 %{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
 %{_unitdir}/plexmediaplayer.service
 %{_unitdir}/plexmediaplayer.target
-%{_datadir}/metainfo/plexmediaplayer.appdata.xml
+%{_metainfodir}/plexmediaplayer.appdata.xml
 %{_datadir}/applications/plexmediaplayer.desktop
 %{_datadir}/icons/hicolor/scalable/apps/plexmediaplayer.svg
 %{_datadir}/plexmediaplayer/plexmediaplayer-standalone-enable
