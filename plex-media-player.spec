@@ -6,7 +6,7 @@
 
 Name:           plex-media-player
 Version:        2.40.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -208,6 +208,13 @@ update-desktop-database &> /dev/null || :
 %{_unitdir}/plexmediaplayer.target
 
 %changelog
+* Wed Nov 06 2019 Leigh Scott <leigh123linux@gmail.com> - 2.40.0-2
+- Add lost session sub-package (rfbz#54430)
+- Add license
+- Use metainfo macros
+- Use systemd macros
+- Remove obsolete scriptlets for fedora and el8
+
 * Fri Aug 23 2019 Nicolas Chauvet <kwizart@gmail.com> - 2.40.0-1
 - Rework spec file
 - Bundle web-client-desktop/tv to avoid net access
