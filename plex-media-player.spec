@@ -143,7 +143,7 @@ desktop-file-install \
 
 mkdir -p %{buildroot}%{_sharedstatedir}/plex-media-player
 
-
+%if 0%{?rhel} == 7
 %post
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
@@ -159,6 +159,7 @@ if [ -x %{_bindir}/gtk-update-icon-cache ]; then
 fi
 update-mime-database %{_datadir}/mime &> /dev/null
 update-desktop-database &> /dev/null || :
+%endif
 
 %pre session
 # Rename plexmediaplayer to plex-media-player
