@@ -189,6 +189,7 @@ update-desktop-database &> /dev/null || :
 
 
 %files
+%license LICENSE
 %{_bindir}/plexmediaplayer
 %{_bindir}/pmphelper
 %{_bindir}/plexmediaplayer-standalone
