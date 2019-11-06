@@ -192,9 +192,6 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/plexmediaplayer
 %{_bindir}/pmphelper
 %{_bindir}/plexmediaplayer-standalone
-%{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
-%{_unitdir}/plexmediaplayer.service
-%{_unitdir}/plexmediaplayer.target
 %{_metainfodir}/plexmediaplayer.appdata.xml
 %{_datadir}/applications/plexmediaplayer.desktop
 %{_datadir}/icons/hicolor/scalable/apps/plexmediaplayer.svg
@@ -202,8 +199,12 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/plexmediaplayer/selinux/plexmediaplayer.te
 %{_datadir}/plexmediaplayer/selinux/plexmediaplayer.pp
 %{_datadir}/plexmediaplayer/web-client/*
-%attr(0750,plex-media-player,plex-media-player) %{_sharedstatedir}/plex-media-player
 
+%files session
+%attr(0750,plex-media-player,plex-media-player) %{_sharedstatedir}/plex-media-player
+%{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
+%{_unitdir}/plexmediaplayer.service
+%{_unitdir}/plexmediaplayer.target
 
 %changelog
 * Fri Aug 23 2019 Nicolas Chauvet <kwizart@gmail.com> - 2.40.0-1
