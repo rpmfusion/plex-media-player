@@ -35,6 +35,7 @@ BuildRequires:  cmake3
 BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
+BuildRequires:  systemd
 
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -129,9 +130,9 @@ mkdir -p %{buildroot}%{_datadir}/plexmediaplayer
 install -pm0755 %{SOURCE9} \
   %{buildroot}%{_datadir}/plexmediaplayer/plexmediaplayer-standalone-enable
 
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/system
-install -pm0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/system/plexmediaplayer.service
-install -pm0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/system/plexmediaplayer.target
+mkdir -p %{buildroot}%{_unitdir}
+install -pm0644 %{SOURCE3} %{buildroot}%{_unitdir}/plexmediaplayer.service
+install -pm0644 %{SOURCE4} %{buildroot}%{_unitdir}/plexmediaplayer.target
 
 mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d
 install -pm0644 %{SOURCE5} \
@@ -192,8 +193,8 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/pmphelper
 %{_bindir}/plexmediaplayer-standalone
 %{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
-%{_prefix}/lib/systemd/system/plexmediaplayer.service
-%{_prefix}/lib/systemd/system/plexmediaplayer.target
+%{_unitdir}/plexmediaplayer.service
+%{_unitdir}/plexmediaplayer.target
 %{_datadir}/metainfo/plexmediaplayer.appdata.xml
 %{_datadir}/applications/plexmediaplayer.desktop
 %{_datadir}/icons/hicolor/scalable/apps/plexmediaplayer.svg
