@@ -1,12 +1,12 @@
-%global plex_hash 2.40.0.1007-5482132c
-%global clients_hash 141-4af71961b12c68
+%global plex_hash 2.44.0.1018-8f77cbb9
+%global clients_hash 151-ce86ded1b12c68
 %global web_client_desktop 3.104.2-1b12c68
-%global web_client_tv 4.3.0-4af7196
+%global web_client_tv 4.11.1-ce86ded
 %global arti_url https://artifacts.plex.tv/web-client-pmp
 
 Name:           plex-media-player
-Version:        2.40.0
-Release:        2%{?dist}
+Version:        2.44.0
+Release:        1%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -211,6 +211,12 @@ update-desktop-database &> /dev/null || :
 %{_unitdir}/%{name}.target
 
 %changelog
+* Thu Nov 07 2019 Leigh Scott <leigh123linux@gmail.com> - 2.44.0-1
+- Update to 2.44.0
+- Fix systemd service name
+- Fix scriptlet
+- Add missing requires qt5-qtquickcontrols
+
 * Wed Nov 06 2019 Leigh Scott <leigh123linux@gmail.com> - 2.40.0-2
 - Add lost session sub-package (rfbz#54430)
 - Add license
