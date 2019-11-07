@@ -67,6 +67,8 @@ Provides: plexmediaplayer = %{version}-%{release}
 Obsoletes: plex < %{version}-%{release}
 Provides: plex = %{version}-%{release}
 
+Requires:       qt5-qtquickcontrols >= 5.6
+
 # For xdgscreensaver
 Requires: xdg-utils
 
