@@ -132,8 +132,8 @@ install -pm0755 %{SOURCE9} \
   %{buildroot}%{_datadir}/plexmediaplayer/plexmediaplayer-standalone-enable
 
 mkdir -p %{buildroot}%{_unitdir}
-install -pm0644 %{SOURCE3} %{buildroot}%{_unitdir}/plexmediaplayer.service
-install -pm0644 %{SOURCE4} %{buildroot}%{_unitdir}/plexmediaplayer.target
+install -pm0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
+install -pm0644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}.target
 
 mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d
 install -pm0644 %{SOURCE5} \
@@ -205,8 +205,8 @@ update-desktop-database &> /dev/null || :
 %files session
 %attr(0750,plex-media-player,plex-media-player) %{_sharedstatedir}/plex-media-player
 %{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
-%{_unitdir}/plexmediaplayer.service
-%{_unitdir}/plexmediaplayer.target
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.target
 
 %changelog
 * Wed Nov 06 2019 Leigh Scott <leigh123linux@gmail.com> - 2.40.0-2
