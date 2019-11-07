@@ -167,7 +167,7 @@ update-desktop-database &> /dev/null || :
 # Rename plexmediaplayer to plex-media-player
 %{_bindir}/getent passwd plexmediaplayer >/dev/null && \
   /sbin/usermod -m -l plex-media-player \
-  -d %{_sharedstatedir}/plex-media-player -s /sbin/nologin
+  -d %{_sharedstatedir}/plex-media-player -s /sbin/nologin \
   -c "Plex Media Player (Standalone)" plex-media-player
 
 # Create "plex-media-player" if it not already exists.
