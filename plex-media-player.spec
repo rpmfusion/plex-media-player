@@ -35,6 +35,7 @@ BuildRequires:  cmake3
 BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
+BuildRequires:  python3
 BuildRequires:  systemd
 
 BuildRequires:  gcc
