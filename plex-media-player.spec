@@ -36,7 +36,7 @@ BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  python3
-%if 0%{?fedora}
+%if 0%{?fedora} > 29
 BuildRequires:  systemd-rpm-macros
 %else
 BuildRequires:  systemd
