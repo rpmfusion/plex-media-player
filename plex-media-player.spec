@@ -195,18 +195,19 @@ update-desktop-database &> /dev/null || :
 %license LICENSE
 %{_bindir}/plexmediaplayer
 %{_bindir}/pmphelper
-%{_bindir}/plexmediaplayer-standalone
 %{_metainfodir}/plexmediaplayer.appdata.xml
 %{_datadir}/applications/plexmediaplayer.desktop
 %{_datadir}/icons/hicolor/scalable/apps/plexmediaplayer.svg
-%{_datadir}/plexmediaplayer/plexmediaplayer-standalone-enable
-%{_datadir}/plexmediaplayer/selinux/plexmediaplayer.te
-%{_datadir}/plexmediaplayer/selinux/plexmediaplayer.pp
+%dir %{_datadir}/plexmediaplayer/
 %{_datadir}/plexmediaplayer/web-client/*
 
 %files session
 %attr(0750,plex-media-player,plex-media-player) %{_sharedstatedir}/plex-media-player
 %{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
+%{_bindir}/plexmediaplayer-standalone
+%{_datadir}/plexmediaplayer/plexmediaplayer-standalone-enable
+%{_datadir}/plexmediaplayer/selinux/plexmediaplayer.te
+%{_datadir}/plexmediaplayer/selinux/plexmediaplayer.pp
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.target
 
