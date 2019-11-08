@@ -36,8 +36,11 @@ BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  python3
+%if 0%{?fedora}
+BuildRequires:  systemd-rpm-macros
+%else
 BuildRequires:  systemd
-
+%endif
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libGL-devel
@@ -148,7 +151,7 @@ desktop-file-install \
 mkdir -p %{buildroot}%{_sharedstatedir}/plex-media-player
 
 %if 0%{?rhel} == 7
-%post
+%postgit commit -a -m 'Fix directory ownership and move standalone files to session sub-package'
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
   %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
