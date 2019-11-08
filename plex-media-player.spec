@@ -6,7 +6,7 @@
 
 Name:           plex-media-player
 Version:        2.44.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -208,6 +208,13 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Fri Nov 08 2019 Leigh Scott <leigh123linux@googlemail.com> - 2.44.0-2
+- Fix directory ownership
+- Move standalone files to session sub-package
+- Use build requires systemd-rpm-macros for fedora
+- Remove obsolete scriplets and clean up
+- Fix session scriptlets
+
 * Thu Nov 07 2019 Leigh Scott <leigh123linux@gmail.com> - 2.44.0-1
 - Update to 2.44.0
 - Fix systemd service name
