@@ -152,20 +152,30 @@ desktop-file-install \
 mkdir -p %{buildroot}%{_sharedstatedir}/plex-media-player
 
 %pre session
+# NEVER delete an user or group created by an RPM package. See:
+# https://fedoraproject.org/wiki/Packaging:UsersAndGroups#Allocation_Strategies
+
 # Rename plexmediaplayer to plex-media-player
-%{_bindir}/getent passwd plexmediaplayer >/dev/null && \
-  /sbin/usermod -m -l plex-media-player \
-  -d %{_sharedstatedir}/plex-media-player -s /sbin/nologin \
-  -c "Plex Media Player (Standalone)" plex-media-player
+# 
+getent group plexmediaplayer >/dev/null && \
+   groupmod -n plex-media-player  plexmediaplayer 
+getent passwd plexmediaplayer >/dev/null && \
+   usermod -m -l plex-media-player \
+   -s /sbin/nologin \
+   -d %{_sharedstatedir}/plex-media-player \
+   -c "Plex Media Player (Standalone)" plexmediaplayer
 
 # Create "plex-media-player" if it not already exists.
 #
-# NEVER delete an user or group created by an RPM package. See:
-# https://fedoraproject.org/wiki/Packaging:UsersAndGroups#Allocation_Strategies
-%{_bindir}/getent passwd plex-media-player >/dev/null || \
-  /sbin/useradd -r -G dialout,video,lock,audio \
-  -d %{_sharedstatedir}/plex-media-player -s /sbin/nologin \
-  -c "Plex Media Player (Standalone)" plex-media-player
+getent group plex-media-player >/dev/null || groupadd -r plex-media-player  &>/dev/null || :
+getent passwd plex-media-player >/dev/null || useradd -r -M \
+  -s /sbin/nologin \
+  -d %{_sharedstatedir}/plex-media-player \
+  -c "Plex Media Player (Standalone)" \
+  -G dialout,video,lock,audio \
+  -d %{_sharedstatedir}/plex-media-player \
+  -g plex-media-player plex-media-player &>/dev/null || :
+exit 0
 
 %post session
 %systemd_post %{name}.service
