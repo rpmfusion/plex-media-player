@@ -1,12 +1,12 @@
-%global plex_hash 2.44.0.1018-8f77cbb9
-%global clients_hash 151-ce86ded1b12c68
+%global plex_hash 2.47.0.1035-e74d341b
+%global clients_hash 159-65a90631b12c68
 %global web_client_desktop 3.104.2-1b12c68
-%global web_client_tv 4.11.1-ce86ded
+%global web_client_tv 4.17.1-65a9063
 %global arti_url https://artifacts.plex.tv/web-client-pmp
 
 Name:           plex-media-player
-Version:        2.44.0
-Release:        2%{?dist}
+Version:        2.47.0
+Release:        1%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -208,6 +208,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Thu Dec 26 2019 Leigh Scott <leigh123linux@googlemail.com> - 2.47.0-1
+- Update to 2.47.0
+
 * Fri Nov 08 2019 Leigh Scott <leigh123linux@googlemail.com> - 2.44.0-2
 - Fix directory ownership
 - Move standalone files to session sub-package
