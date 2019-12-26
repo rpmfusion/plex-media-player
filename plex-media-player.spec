@@ -44,7 +44,9 @@ BuildRequires:  systemd
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libGL-devel
+%if 0%{?fedora}
 BuildRequires:  pkgconfig(libcec)
+%endif
 BuildRequires:  pkgconfig(libdrm)
 %if 0%{?fedora} > 29
 BuildRequires:  minizip-compat-devel
