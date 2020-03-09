@@ -1,6 +1,6 @@
 %global plex_hash 2.52.2.1056-29c49026
-%global clients_hash 172-17d1db2564f6ac
-%global web_client_desktop 4.27.0-564f6ac
+%global clients_hash 173-17d1db2ca0ff70
+%global web_client_desktop 4.26.1-ca0ff70
 %global web_client_tv 4.27.1-17d1db2
 %global arti_url https://artifacts.plex.tv/web-client-pmp
 
