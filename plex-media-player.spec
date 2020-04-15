@@ -28,6 +28,8 @@ Source92:       %{arti_url}/%{clients_hash}/web-client-desktop-%{web_client_desk
 Source93:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz
 Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz.sha1
 
+Patch0:         buildfix_qt514.patch
+
 # qtwebengine is not available there
 ExcludeArch: ppc64le
 
