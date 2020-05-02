@@ -1,11 +1,11 @@
-%global plex_hash 2.55.0.1069-2369bed9
-%global clients_hash 180-afec74de50e175
+%global plex_hash 2.56.0.1071-85947843
+%global clients_hash 181-9e1b1f2e50e175
 %global web_client_desktop 4.29.2-e50e175
-%global web_client_tv 4.29.3-afec74d
+%global web_client_tv 4.29.4-9e1b1f2
 %global arti_url https://artifacts.plex.tv/web-client-pmp
 
 Name:           plex-media-player
-Version:        2.55.0
+Version:        2.56.0
 Release:        1%{?dist}
 Summary:        Plex Media Player
 
@@ -206,6 +206,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Sat May 02 2020 Leigh Scott <leigh123linux@gmail.com> - 2.56.0-1
+- Update to 2.56.0
+
 * Wed Apr 15 2020 Leigh Scott <leigh123linux@gmail.com> - 2.55.0-1
 - Update to 2.55.0
 
