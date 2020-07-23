@@ -99,9 +99,9 @@ Player in TV mode at boot for HTPC installations.
 
 %build
 rm -Rf build
-mkdir -p dependencies
-install -p %{SOURCE90} dependencies/buildid-%{clients_hash}.cmake
-install -p %{SOURCE91} %{SOURCE92} %{SOURCE93} %{SOURCE94} dependencies/
+mkdir -p %{_vpath_builddir}/dependencies
+install -p %{SOURCE90} %{_vpath_builddir}/dependencies/buildid-%{clients_hash}.cmake
+install -p %{SOURCE91} %{SOURCE92} %{SOURCE93} %{SOURCE94} %{_vpath_builddir}/dependencies/
 
 
 %cmake3 \
