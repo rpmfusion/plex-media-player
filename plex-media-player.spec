@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global plex_hash 2.58.0.1076-38e019da
 %global clients_hash 183-045db5be50e175
 %global web_client_desktop 4.29.2-e50e175
@@ -6,7 +8,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -97,29 +99,27 @@ Player in TV mode at boot for HTPC installations.
 
 %build
 rm -Rf build
-mkdir -p build/dependencies
-install -p %{SOURCE90} build/dependencies/buildid-%{clients_hash}.cmake
-install -p %{SOURCE91} %{SOURCE92} %{SOURCE93} %{SOURCE94} build/dependencies/
+mkdir -p dependencies
+install -p %{SOURCE90} dependencies/buildid-%{clients_hash}.cmake
+install -p %{SOURCE91} %{SOURCE92} %{SOURCE93} %{SOURCE94} dependencies/
 
 
-cd build
 %cmake3 \
   -GNinja \
   -DOpenGL_GL_PREFERENCE=GLVND \
   -DQTROOT=%{_qt5_prefix} \
   -DMPV_INCLUDE_DIR=%{_includedir}/mpv \
   -DLINUX_DBUS=ON \
-  -DLINUX_X11POWER=ON \
-  ..
+  -DLINUX_X11POWER=ON
 
-%ninja_build
+%cmake3_build
 
 %install
-%ninja_install -C build
+%cmake3_install
 
 mkdir -p %{buildroot}%{_bindir}
-install -pm0755 build/src/plexmediaplayer %{buildroot}%{_bindir}/plexmediaplayer
-install -pm0755 build/src/pmphelper %{buildroot}%{_bindir}/pmphelper
+install -pm0755 %{_vpath_builddir}/src/plexmediaplayer %{buildroot}%{_bindir}/plexmediaplayer
+install -pm0755 %{_vpath_builddir}/src/pmphelper %{buildroot}%{_bindir}/pmphelper
 install -pm0755 %{SOURCE6} %{buildroot}%{_bindir}/plexmediaplayer-standalone
 
 mkdir -p %{buildroot}%{_metainfodir}/
@@ -206,6 +206,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Thu Jul 23 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-2
+- Improve compatibility with new CMake macro
+
 * Tue May 26 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-1
 - Update to 2.58.0
 
