@@ -9,7 +9,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -209,7 +209,7 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
-* Fri Jul 24 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-2
+* Fri Jul 24 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-3
 - Use old cmake macro
 
 * Thu Jul 23 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-2
