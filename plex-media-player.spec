@@ -1,3 +1,6 @@
+# Use old cmake macro
+%global __cmake_in_source_build 1
+
 %global plex_hash 2.58.0.1076-38e019da
 %global clients_hash 183-045db5be50e175
 %global web_client_desktop 4.29.2-e50e175
@@ -6,7 +9,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -206,6 +209,12 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Fri Jul 24 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-2
+- Use old cmake macro
+
+* Thu Jul 23 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-2
+- Improve compatibility with new CMake macro
+
 * Tue May 26 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-1
 - Update to 2.58.0
 
