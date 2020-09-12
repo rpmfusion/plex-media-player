@@ -9,7 +9,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -209,6 +209,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Sat Sep 12 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-5
+- Rebuild for libcec
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.58.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
