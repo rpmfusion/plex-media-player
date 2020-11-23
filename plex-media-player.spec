@@ -9,7 +9,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -209,6 +209,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Mon Nov 23 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-6
+- Rebuild for new mpv
+
 * Sat Sep 12 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-5
 - Rebuild for libcec
 
