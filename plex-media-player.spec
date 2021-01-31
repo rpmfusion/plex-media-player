@@ -6,15 +6,16 @@
 %global web_client_desktop 4.29.2-e50e175
 %global web_client_tv 4.29.6-045db5b
 %global arti_url https://artifacts.plex.tv/web-client-pmp
+%global git_url https://github.com/plexinc/plex-media-player
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
 URL:            https://plex.tv/
-Source0:        https://github.com/plexinc/plex-media-player/archive/v%{plex_hash}/%{name}-%{plex_hash}.tar.gz
+Source0:        %{git_url}/archive/v%{plex_hash}/%{name}-%{plex_hash}.tar.gz
 Source1:        plexmediaplayer.desktop
 Source2:        plexmediaplayer.appdata.xml
 Source3:        plexmediaplayer.service
@@ -32,6 +33,7 @@ Source93:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.x
 Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz.sha1
 
 Patch0:         buildfix_qt514.patch
+Patch1:         %{git_url}/commit/5430cd807250a8f7329baad76b15a363f35b53fa.patch
 
 # qtwebengine is not available there
 ExcludeArch: ppc64le
@@ -209,6 +211,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Sun Jan 31 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-7
+- Patch for new mpv
+
 * Mon Nov 23 2020 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-6
 - Rebuild for new mpv
 
