@@ -10,7 +10,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -211,6 +211,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Sat Apr 24 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-9
+- Rebuilt for removed libstdc++ symbol (#1937698)
+
 * Wed Feb 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.58.0-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
