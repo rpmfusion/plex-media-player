@@ -10,7 +10,7 @@
 
 Name:           plex-media-player
 Version:        2.58.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -32,8 +32,9 @@ Source92:       %{arti_url}/%{clients_hash}/web-client-desktop-%{web_client_desk
 Source93:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz
 Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz.sha1
 
-Patch0:         buildfix_qt514.patch
-Patch1:         %{git_url}/commit/5430cd807250a8f7329baad76b15a363f35b53fa.patch
+Patch0:         %{git_url}/commit/5430cd807250a8f7329baad76b15a363f35b53fa.patch
+Patch1:         %{git_url}/commit/5d099a167ba44942a5da841a113f23b076b622a2.patch
+Patch2:         %{git_url}/commit/ae73e074b1d5a94a3975fc93c883840ab786ff0c.patch
 
 # qtwebengine is not available there
 ExcludeArch: ppc64le
@@ -43,19 +44,17 @@ BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  python3
-%if 0%{?fedora} > 29
+%if 0%{?fedora}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  minizip-compat-devel
+BuildRequires:  pkgconfig(libcec)
 %else
 BuildRequires:  systemd
 BuildRequires:  minizip1.2-devel
 %endif
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libGL-devel
-%if 0%{?fedora}
-BuildRequires:  pkgconfig(libcec)
-%endif
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(Qt5) >= 5.9.5
@@ -109,8 +108,7 @@ install -p %{SOURCE91} %{SOURCE92} %{SOURCE93} %{SOURCE94} build/dependencies/
 
 cd build
 %cmake3 \
-  -GNinja \
-  -DOpenGL_GL_PREFERENCE=GLVND \
+  -GNinja -Wno-dev \
   -DQTROOT=%{_qt5_prefix} \
   -DMPV_INCLUDE_DIR=%{_includedir}/mpv \
   -DLINUX_DBUS=ON \
@@ -211,6 +209,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Sat May 08 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-10
+- Update patches
+
 * Sat Apr 24 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-9
 - Rebuilt for removed libstdc++ symbol (#1937698)
 
