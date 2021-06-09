@@ -37,6 +37,7 @@ Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.x
 ExcludeArch: ppc64le
 
 BuildRequires:  cmake
+BuildRequires:  chrpath
 BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
@@ -148,6 +149,9 @@ desktop-file-install \
   %{SOURCE1}
 
 mkdir -p %{buildroot}%{_sharedstatedir}/plex-media-player
+
+chrpath -d %{buildroot}%{_bindir}/plexmediaplayer
+chrpath -d %{buildroot}%{_bindir}/pmphelper
 
 %pre session
 # NEVER delete an user or group created by an RPM package. See:
