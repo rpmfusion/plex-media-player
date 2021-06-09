@@ -1,7 +1,7 @@
 # Use old cmake macro
 %global __cmake_in_source_build 1
 
-%global plex_hash 2.58.0.1076-38e019da
+%global plex_hash 2.58.1-ae73e074
 %global clients_hash 183-045db5be50e175
 %global web_client_desktop 4.29.2-e50e175
 %global web_client_tv 4.29.6-045db5b
@@ -9,8 +9,8 @@
 %global git_url https://github.com/plexinc/plex-media-player
 
 Name:           plex-media-player
-Version:        2.58.0
-Release:        10%{?dist}
+Version:        2.58.1
+Release:        1%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -32,9 +32,6 @@ Source92:       %{arti_url}/%{clients_hash}/web-client-desktop-%{web_client_desk
 Source93:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz
 Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.xz.sha1
 
-Patch0:         %{git_url}/commit/5430cd807250a8f7329baad76b15a363f35b53fa.patch
-Patch1:         %{git_url}/commit/5d099a167ba44942a5da841a113f23b076b622a2.patch
-Patch2:         %{git_url}/commit/ae73e074b1d5a94a3975fc93c883840ab786ff0c.patch
 
 # qtwebengine is not available there
 ExcludeArch: ppc64le
@@ -209,6 +206,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Wed Jun 09 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.1-1
+- Update to 2.58.1
+
 * Sat May 08 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.0-10
 - Update patches
 
