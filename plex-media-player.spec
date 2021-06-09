@@ -36,7 +36,7 @@ Source94:       %{arti_url}/%{clients_hash}/web-client-tv-%{web_client_tv}.tar.x
 # qtwebengine is not available there
 ExcludeArch: ppc64le
 
-BuildRequires:  cmake3
+BuildRequires:  cmake
 BuildRequires:  ninja-build
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
