@@ -10,7 +10,7 @@
 
 Name:           plex-media-player
 Version:        2.58.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
@@ -210,6 +210,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.58.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Wed Jun 09 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.1-1
 - Update to 2.58.1
 
