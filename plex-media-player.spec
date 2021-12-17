@@ -10,13 +10,12 @@
 
 Name:           plex-media-player
 Version:        2.58.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Plex Media Player
 
 License:        GPLv2+
 URL:            https://plex.tv/
 Source0:        %{git_url}/archive/v%{plex_hash}/%{name}-%{plex_hash}.tar.gz
-Source1:        plexmediaplayer.desktop
 Source2:        plexmediaplayer.appdata.xml
 Source3:        plexmediaplayer.service
 Source4:        plexmediaplayer.target
@@ -144,9 +143,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d
 install -pm0644 %{SOURCE5} \
   %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/plexmediaplayer.pkla.disabled
 
-desktop-file-install \
-  --dir=%{buildroot}%{_datadir}/applications \
-  %{SOURCE1}
+desktop-file-validate %{buildroot}%{_datadir}/applications/plexmediaplayer.desktop
 
 mkdir -p %{buildroot}%{_sharedstatedir}/plex-media-player
 
@@ -210,6 +207,9 @@ exit 0
 %{_unitdir}/%{name}.target
 
 %changelog
+* Fri Dec 17 2021 Leigh Scott <leigh123linux@gmail.com> - 2.58.1-3
+- Use bundled desktop file (rfbz#6180)
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.58.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
